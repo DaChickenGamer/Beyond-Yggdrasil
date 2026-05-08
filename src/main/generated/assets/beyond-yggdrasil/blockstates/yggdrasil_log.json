@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "beyond-yggdrasil:block/yggdrasil_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "beyond-yggdrasil:block/yggdrasil_log"
+    },
+    "axis=z": {
+      "model": "beyond-yggdrasil:block/yggdrasil_log",
+      "x": 90
+    }
+  }
+}

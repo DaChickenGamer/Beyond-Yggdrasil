@@ -1,5 +1,6 @@
 package chicken.beyondyggdrasil;
 
+import chicken.beyondyggdrasil.sapling.YggdrasilTree;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -8,10 +9,12 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.Optional;
 import java.util.function.Function;
@@ -45,19 +48,21 @@ public class ModBlocks {
         return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(BeyondYggdrasil.MOD_ID, name));
     }
 
-
-    public static final TreeGrower YGGDRASIL_GROWER = new TreeGrower(
-            "yggdrasil",
-            Optional.empty(), // Mega tree (2x2) feature key
-            Optional.of(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(BeyondYggdrasil.MOD_ID, "yggdrasil_tree"))), // Regular tree feature key
-            Optional.empty()  // Flowers feature key (bees)
-    );
-
-    public static final Block YGGDRASIL_SAPLING_BLOCK = register(
+    public static final Block YGGDRASIL_SAPLING = register(
             "yggdrasil_sapling",
-            properties -> new SaplingBlock(YGGDRASIL_GROWER, properties),
-            BlockBehaviour.Properties.of().sound(SoundType.GRASS),
+            YggdrasilTree::new,
+            BlockBehaviour.Properties.of().noCollision().randomTicks().instabreak().sound(SoundType.GRASS),
             true
     );
+
+    public static final Block YGGDRASIL_LOG = register(
+            "yggdrasil_log",
+            RotatedPillarBlock::new,
+            BlockBehaviour.Properties.of()
+                    .strength(2.0f, 3.0f)
+                    .sound(SoundType.WOOD),
+            true
+    );
+
     public static void initialize(){}
 }

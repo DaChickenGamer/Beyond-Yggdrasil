@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "beyond-yggdrasil:block/yggdrasil_sapling"
+  }
+}

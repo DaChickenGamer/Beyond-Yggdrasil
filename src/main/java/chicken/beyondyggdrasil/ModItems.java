@@ -36,10 +36,11 @@ public class ModItems {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(BeyondYggdrasil.MOD_ID, "creative_tab")
     );
     public static final CreativeModeTab CUSTOM_CREATIVE_TAB = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(ModBlocks.YGGDRASIL_SAPLING_BLOCK))
+            .icon(() -> new ItemStack(ModBlocks.YGGDRASIL_SAPLING))
             .title(Component.translatable("creativeTab.beyond-yggdrasil"))
             .displayItems((params, output) -> {
-                output.accept(ModBlocks.YGGDRASIL_SAPLING_BLOCK);
+                output.accept(ModBlocks.YGGDRASIL_SAPLING);
+                output.accept(ModBlocks.YGGDRASIL_LOG);
 
                 // The tab builder also accepts Blocks
                 //output.accept(ModBlocks.CONDENSED_OAK_LOG);
